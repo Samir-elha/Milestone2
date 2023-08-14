@@ -1,28 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Milestone 2</title>
-  </head>
-  <body>
-    <h1><span id="user">Loading...</span> has reached milestone 2!</h1>
-
-    <script>
-      // fetch user from API
-      fetch("http://<api endpoint here>/user")
-        .then((res) => res.json())
-        .then((data) => {
-          // get user name
-          const user = data.name;
-          // display user name
-          document.getElementById("user").innerText = user;
-        });
-    </script>
-  </body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,7 +11,7 @@
 
     <script>
       // fetch users from API
-      fetch("http://localhost:8000/users")
+      fetch("http://192.168.2.152:8000/users")
         .then((res) => res.json())
         .then((data) => {
           // get the first user's name
@@ -51,3 +26,5 @@
     </script>
   </body>
 </html>
+
+

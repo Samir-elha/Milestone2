@@ -29,15 +29,47 @@
 
 #     return {"name": user["name"]}  # Adjust according to your data structure
 
+# from motor.motor_asyncio import AsyncIOMotorClient
+# from fastapi import FastAPI
+# from fastapi.middleware.cors import CORSMiddleware
+
+
+# app = FastAPI()
+
+# origins = [
+#     "http://192.168.2.152:8000",  # replace with the address where your front-end is served
+# ]
+
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=origins,
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
+
+# client = AsyncIOMotorClient("mongodb://localhost:27017/")
+# db = client["users"]
+# collection = db["myCollection"]
+
+
+# @app.get("/users")
+# async def get_users():
+#     users = []
+#     async for user in collection.find():
+#         user["_id"] = str(user["_id"])  # Convert ObjectId to string
+#         users.append(user)
+#     return {"users": users}
+
+
 from motor.motor_asyncio import AsyncIOMotorClient
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-
 app = FastAPI()
 
 origins = [
-    "http://localhost:8000",  # replace with the address where your front-end is served
+    "http://192.168.2.152",  # replace with the address where your front-end is served
 ]
 
 app.add_middleware(
@@ -48,10 +80,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-client = AsyncIOMotorClient("mongodb://localhost:27017/")
+MONGO_HOST = "my_mongodb_container"  # Use the name of your MongoDB container
+MONGO_PORT = 27017
+
+client = AsyncIOMotorClient(f"mongodb://{MONGO_HOST}:{MONGO_PORT}/")
 db = client["users"]
 collection = db["myCollection"]
-
 
 @app.get("/users")
 async def get_users():

@@ -8,8 +8,11 @@ services:
     build: ./fastapi-service
     ports:
       - "8000:8000"
+    volumes:
+      - ./fastapi-service:/app
   mongo:
     image: mongo:4.4
+    container_name: my_mongodb_container
     volumes:
       - ./mongodb/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js
 
