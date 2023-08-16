@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: fastapi
-        image: samirelh7/milestone2_api:latest
+        image: docker.io/samirelh7/milestone2_api:update5
         ports:
         - containerPort: 8000
 ---
